@@ -1,0 +1,103 @@
+
+*{
+	font-family: Calibri Light;
+}
+
+body{
+background:linear-gradient(to right,rgb(222, 224, 213),rgb(245, 245, 247));
+width:80%;
+justify-content: center;
+text-align:center;
+
+}
+
+h1{
+text-align:center;
+color: 	rgb(49, 49, 49);
+margin-bottom:50px;
+margin-top:100px;
+
+}
+
+.Input{
+height:45px;
+width:230px;
+margin-left:10px;
+border:2px;
+margin-bottom:5px;
+background:transparent;
+border-bottom:1px solid rgb(67, 69, 70);
+font-size:19px;
+color:rgb(49, 49, 49);
+padding-left:8px;
+
+}
+
+.rec-btn{
+text-align:center;
+height:60px;
+width:150px;
+margin-left:20px;
+font-size:25px;
+background:linear-gradient(to left top,rgb(150, 150, 100),rgb(192, 192, 190));
+color:white;
+margin-top:10px;
+border:2px solid white;
+border-radius:30px;
+}
+.rec-btn:hover{
+background:linear-gradient(to right,rgb(150, 150, 100),rgb(192, 192, 190));
+color:black;
+border:2px solid black;
+}
+
+.model_desc{
+width:300px;
+color:rgb(54, 52, 52);
+font-size:17px;
+float:left;
+font:Calibri;
+padding:10px;
+display:inline-box;
+line-height: 1.1em;
+height:700px;
+margin-right: 100px;
+margin-left:20%;
+margin-top:90px;
+margin-bottom:10px;
+text-align: left;
+border-top-left-radius:30px;
+border-bottom-left-radius:30px;
+background:rgb(168, 168, 160);
+}
+
+
+.dataframe {
+    border-collapse: collapse;
+    width: 50%;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    color: #333;
+    margin-left:10px;
+}
+
+.dataframe th,
+.dataframe td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    margin-left: 50px;
+}
+
+.dataframe th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.dataframe tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.dataframe tr:hover {
+    background-color: #f1f1f1;
+}

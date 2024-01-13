@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommendation System</title>
+    <meta charset="utf-8">
+	<meta name="author" content="Rami Fisher">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="static/AppStyle.css">
+</head>
+<body>
+
+    <div class="model_desc">
+        <h2> Description </h2><br>
+       <p>Recommendation system for amazon items based on amzon's users reviews dataset.</p>
+       <p>The user of the application can pick the following parameter:  </p> <br> 1. Username</br> <br>2. Rec System Method (CB/MF/Random) </br> <br>3. Top K items </br>
+       </p>The app will output the top K item that are most recommended to the current username</p>
+
+    </div>
+    <div>
+        <h1>Amzon Items Recommendation System </h1>
+        <form action="{{url_for('recommend')}}" method="post">
+
+            <select name="username" class="Input">
+                {% for username in usernames %}
+                    <option value="{{ username }}">{{ username }}</option>
+                {% endfor %}
+            </select>
+
+            <select name="rec_methods" class="Input">
+                {% for o in rec_methods %}
+                <option value="{{ o.metric }}">{{ o.metric }}</option>
+                {% endfor %}
+            </select>
+
+            <input class="Input" type="text" name="Top K" placeholder="Enter top K" required/>
+
+            <button type="submit" class="rec-btn"> Recommend </button>
+
+
+        </form>
+            {% if top_k_html %}
+            <h3>User Item List Recommendation</h3>
+                {{ top_k_html|safe }}
+            {% endif %}
+
+    </div>
+</body>
+</html>
