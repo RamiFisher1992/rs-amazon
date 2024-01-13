@@ -40,45 +40,6 @@ algo_file = './outputs/Random/random_algo.sav'
 with open(algo_file, 'rb') as file:
     random_algo = pickle.load(file)
 
-
-#CB - Recommen k items for a given user#
-def content_based_recommend(user_name,k,dis_metric):
-    #Get user_name id#
-    user_id = usernames_ids_dict.get(user_name,0)
-    #Get user_profile by user_id
-    user_profile = ut.get_user_profile_by_user_id(users_profiles,user_id)
-    #Get top_k item ids,scores and estimated rating#
-    top_k_items_ids,top_items_scores,ratings = ut.get_top_k_items_for_specific_user(k,user_profile,items_profiles,dis_metric)
-
-
-    #Get items names according to item_ids
-    recommendation_df = ut.get_items_names(ids_items_dict,top_k_items_ids)
-    recommendation_df['Metric_Score'] = top_items_scores
-    recommendation_df['Est_Rating'] = ratings
-    recommendation_df['Usename'] = user_name
-
-    return recommendation_df
-
-
-#MF - Recommen k items for a given user#
-def matrix_factorization_recommend(user_name,k):
-    #Get user_name id#
-    user_id = usernames_ids_dict.get(user_name,0)
-
-    #Get top n predictions by the fitted algo
-    top_n_predictions = ut.get_top_n(user_id,trainset,svd_tunned_algo,k)
-    #Get top items ids
-    top_items_ids = [obj.iid for obj in top_n_predictions]
-    #Get top items rating
-    top_k_ratings = [obj.est for obj in top_n_predictions]
-
-    #Get items names according to item_ids
-    recommendation_df = ut.get_items_names(ids_items_dict,top_items_ids)
-    recommendation_df['Est_Rating'] = top_k_ratings
-    recommendation_df['Usename'] = user_name
-    return recommendation_df
-
-
 def recommand_item_for_user(user_name,k,rec_type,dist_metric='CB_Cosine'):
     top_items_scores=[]
     #Get user_name id#
