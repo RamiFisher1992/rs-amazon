@@ -17,7 +17,7 @@ This document outlines the workflow for our project solution, detailing the vari
 
 ## Introduction
 
-This document provides an overview of the workflow employed to deliver our project solution. It covers data preprocessing, exploratory data analysis, recommendation approaches, and the development of the application using Flask.
+This document provides an overview of the workflow employed to deliver my project solution. It covers data preprocessing, exploratory data analysis, recommendation approaches, and the development of the application using Flask.
 
 ## Project Stages
 
