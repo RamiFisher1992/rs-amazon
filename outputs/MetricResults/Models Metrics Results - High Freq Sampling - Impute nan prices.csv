@@ -1,0 +1,4 @@
+,Random,CF KNN - user based,CF KNN - item based,MF - SVD ,CB - cosine,CB - euclidean
+RMSE,1.41,1.18,1.07,0.95,1.13,1.57
+Recall@K,0.56,0.78,0.8,0.79,0.82,0.05
+Precision@K,0.65,0.76,0.8,0.79,0.8,0.07
