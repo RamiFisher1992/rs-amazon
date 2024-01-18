@@ -40,22 +40,24 @@ def get_top_n(user_id,trainset,cf_algo, n=10):
 
 
 # Get top n recommendation according to content based
-def get_top_k_items_for_specific_user(top_k,user_profile,items_profiles,dis_metric):
-
+def get_top_k_items_for_specific_user(top_k,user_profile,user_items_ids,items_profiles,dis_metric):
+    #Filter only unseen items 
+    unseen_items = items_profiles[~items_profiles['item_id'].isin(user_items_ids)]
+    
     if dis_metric=='CB_Cosine':
-        items_scores = cosine_similarity(user_profile,items_profiles.iloc[:, :-1].values)
+        items_scores = cosine_similarity(user_profile,unseen_items.iloc[:, :-1].values)
         #Looking for the higer cosin simillarity#
         top_items_scores = np.sort(items_scores)[0][::-1][:top_k]
         ratings = [cosine_similarity_to_rating(score) for score in top_items_scores]
         top_items_indices = np.argsort(items_scores)[0][::-1][:top_k]
     elif dis_metric=='CB_Euclidean':
-        items_scores = euclidean_distances(user_profile,items_profiles.iloc[:, :-1].values)
+        items_scores = euclidean_distances(user_profile,unseen_items.iloc[:, :-1].values)
         #Looking for the lower euclidean#
         top_items_scores = np.sort(items_scores)[0][:top_k]
         ratings = [euclidean_to_rating(score) for score in top_items_scores]
         top_items_indices = np.argsort(items_scores)[0][:top_k]
     
-    top_items_ids = items_profiles.iloc[top_items_indices]['item_id'].values
+    top_items_ids = unseen_items.iloc[top_items_indices]['item_id'].values
     return top_items_ids,top_items_scores,ratings
 
 # Convert the cosine similarity score to rating

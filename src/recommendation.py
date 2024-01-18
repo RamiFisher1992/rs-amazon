@@ -11,6 +11,7 @@ with open('./outputs/IDs/ids_items_dict.json', 'r') as file:
     ids_items_dict = json.load(file)
 with open('./outputs/IDs/usernames_ids_dict.json', 'r') as file:
     usernames_ids_dict = json.load(file)
+user_item_rating = pd.read_csv('./data/user_item_rating.csv',index_col=[0])
 
 """
 Content Based
@@ -44,12 +45,15 @@ def recommand_item_for_user(user_name,k,rec_type,dist_metric='CB_Cosine'):
     top_items_scores=[]
     #Get user_name id#
     user_id = usernames_ids_dict.get(user_name,0)
+
     #Content Based Recommendation#
     if rec_type=='CB':
+        user_items_ids=[]
+        user_items_ids = user_item_rating[user_item_rating['user_id']==user_id]['item_id']
         #Get user_profile by user_id
         user_profile = ut.get_user_profile_by_user_id(users_profiles,user_id)
         #Get top_k item ids,scores and estimated rating#
-        top_k_items_ids,top_items_scores,top_k_ratings = ut.get_top_k_items_for_specific_user(k,user_profile,items_profiles,dist_metric)
+        top_k_items_ids,top_items_scores,top_k_ratings = ut.get_top_k_items_for_specific_user(k,user_profile,user_items_ids,items_profiles,dist_metric)
     else:
         #Matrix Factorization or Random Recommendation#
         if rec_type=='MF':
