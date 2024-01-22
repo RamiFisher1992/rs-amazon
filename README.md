@@ -1,6 +1,9 @@
 # Project Solution Workflow
 <img src= https://github.com/RamiFisher1992/rs-amazon/blob/be4767a7ea1f59e29e67bf3c6230f5751acc0d38/readme-image/app-image.PNG alt="Alt Text" width="500" height="300">
 
+
+[Project Presentation](https://github.com/RamiFisher1992/rs-amazon/blob/main/Product%20Rating%20Prediction.pdf)
+
 This document outlines the workflow for our project solution, detailing the various stages, methodologies, and tools used to achieve the desired results.
 
 ## Table of Contents
